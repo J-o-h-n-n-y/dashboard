@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import SearchResultView
+from .views import search
 
 urlpatterns = [
-    path('home', SearchResultView.as_view(), name='home')
+    path('home', search, name='home')
 ]

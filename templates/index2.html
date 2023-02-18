@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="get" action="{% url 'home' %}">
+<label class="period" for="period">Начало периода</label>
+<input type="hidden" name="action" value="contact_agent">
+<select name="year_from" id="period">
+    <option value="">2019</option>
+    <option value="">2020</option>
+    <option value="">2021</option>
+    <option value="">2022</option>
+    <option value="">2023</option>
+</select>
+
+<label class="period" for="period">Конечный период</label>
+<select name="year_to" id="period">
+    <option value="">2019</option>
+    <option value="">2020</option>
+    <option value="">2021</option>
+    <option value="">2022</option>
+    <option value="">2023</option>
+</select>
+
+
+<label class="region" for="region">Регион</label>
+<select multiple name="region" id="region">
+
+    <optgroup label="ДФО">
+    <option value="">Амурская область</option>
+    <option value="">Еврейская автономная область</option>
+    <option value="">Забайкальский край</option>
+    <option value="">Камчатский край</option>
+    <option value="">Магаданская область</option>
+    <option value="">Приморский край</option>
+    <option value="">Республика Бурятия</option>
+    <option value="">Республика Саха (Якутия)</option>
+    <option value="">Сахалинская область</option>
+    <option value="">Хабаровский край</option>
+    <option value="">Чукотский автономный округ</option>
+    </optgroup>
+
+
+    <optgroup label="ПФО">
+        <option value="">Кировская область</option>
+        <option value="">Нижегородская область</option>
+        <option value="">Оренбургская область</option>
+        <option value="">Пензенская область</option>
+        <option value="">Пермский край</option>
+        <option value="">Республика Башкортостан</option>
+        <option value="">Республика Марий Эл</option>
+        <option value="">Республика Мордовия</option>
+        <option value="">Республика Татарстан</option>
+        <option value="">Самарская область</option>
+        <option value="">Саратовская область</option>
+        <option value="">Удмуртская Республика</option>
+        <option value="">Ульяновская область</option>
+        <option value="">Чувашская Республика</option>
+        </optgroup>
+
+        <optgroup label="СЗФО">
+            <option value="">Архангельская область</option>
+            <option value="">Вологодская область</option>
+            <option value="">Калининградская область</option>
+            <option value="">Ленинградская область</option>
+            <option value="">Мурманская область</option>
+            <option value="">Ненецкий автономный округ</option>
+            <option value="">Новгородская область</option>
+            <option value="">Псковская область</option>
+            <option value="">Республика Карелия</option>
+            <option value="">Республика Коми</option>
+            <option value="">Санкт-Петербург</option>
+            </optgroup>
+
+            <optgroup label="СКФО">
+                <option value="">Кабардино-Балкарская Республика</option>
+                <option value="">Карачаево-Черкесская Республика</option>
+                <option value="">Республика Дагестан</option>
+                <option value="">Республика Ингушетия</option>
+                <option value="">Республика Северная Осетия - Алания</option>
+                <option value="">Ставропольский край</option>
+                <option value="">Чеченская Республика</option>
+                </optgroup>
+
+                <optgroup label="СФО">
+                    <option value="">Алтайский край</option>
+                    <option value="">Иркутская область</option>
+                    <option value="">Кемеровская область</option>
+                    <option value="">Красноярский край</option>
+                    <option value="">Новосибирская область</option>
+                    <option value="">Омская область</option>
+                    <option value="">Республика Алтай</option>
+                    <option value="">Республика Тыва</option>
+                    <option value="">Республика Хакасия</option>
+                    <option value="">Томская область</option>
+                    </optgroup>
+
+                    
+                <optgroup label="УФО">
+                    <option value="">Курганская область</option>
+                    <option value="">Свердловская область</option>
+                    <option value="">Тюменская область</option>
+                    <option value="">Ханты-Мансийский автономный округ - Югра</option>
+                    <option value="">Челябинская область</option>
+                    <option value="">Ямало-Ненецкий автономный округ</option>
+                    </optgroup>
+
+                    <optgroup label="ЦФО">
+                        <option value="">Белгородская область</option>
+                        <option value="">Брянская область</option>
+                        <option value="">Владимирская область/option>
+                        <option value="">Воронежская область</option>
+                        <option value="">Ивановская область</option>
+                        <option value="">Калужская область</option>
+                        <option value="">Костромская область</option>
+                        <option value="">Курская область</option>
+                        <option value="">Липецкая область</option>
+                        <option value="">Москва</option>
+                        <option value="">Московская область</option>
+                        <option value="">Орловская область</option>
+                        <option value="">Рязанская область</option>
+                        <option value="">Смоленская область</option>
+                        <option value="">Тамбовская область</option>
+                        <option value="">Тверская область</option>
+                        <option value="">Тульская область</option>
+                        <option value="">Ярославская область</option>
+                        </optgroup>
+
+                        <optgroup label="ЮФО">
+                            <option value="">Астраханская  область</option>
+                            <option value="">Волгоградская область</option>
+                            <option value="">Краснодарский край</option>
+                            <option value="">Республика Адыгея</option>
+                            <option value="">Республика Калмыкия</option>
+                            <option value="">Республика Крым</option>
+                            <option value="">Ростовская область</option>
+                            <option value="">Севастополь</option>
+                            </optgroup>
+    
+</select>
+
+<label class="category" for="category">Категория</label>
+<select multiple name="direction" id="category">
+    <option value="">Вовлечение молодeжи в инновационную деятельность и научно-техническое творчество, в том числе (аэрокосмос)</option>
+    <option value="">Вовлечение молодeжи в инновационную деятельность и научно-техническое творчество, в том числе (биомедицина)</option>
+    <option value="">Социализация молодeжи, нуждающейся в особой заботе государства</option>
+    <option value="">Вовлечение молодежи в волонтерскую деятельность</option>
+    <option value="">Вовлечение молодeжи в работу средств массовой информации (молодeжные медиа)</option>
+    <option value="">Вовлечение молодeжи в здоровый образ жизни и занятия спортом, популяризация культуры безопасности в молодeжной среде</option>
+    <option value="">Вовлечение молодeжи в занятие творческой деятельностью</option>
+    <option value="">Вовлечение молодeжи в инновационную деятельность и научно-техническое творчество</option>
+    <option value="">другие</option>
+    <option value="">другое</option>
+    <option value="">информационные технологии - IT (в том числе робототехника)</option>
+    <option value="">историко-краеведческих кружков и объединений исторической реконструкции</option>
+    <option value="">молодeжных казачьих объединений</option>
+    <option value="">на развитие и мероприятия военно-патриотических клубов</option>
+    <option value="">Поддержка и взаимодействие с общественными организациями и движениями</option>
+    <option value="">Патриотическое воспитание молодeжи</option>
+    <option value="">промышленные технологии</option>
+    <option value="">поисковых отрядов и объединений</option>
+    <option value="">Развитие международного и межрегионального молодeжного сотрудничества</option>
+    <option value="">Работа с молодeжью, находящейся в социально-опасном положении</option>
+    <option value="">Развитие молодeжного самоуправления</option>
+    <option value="">Социализация молодeжи, нуждающейся в особой заботе государства</option>
+    <option value="">Содействие профориентации и карьерным устремлениям молодeжи</option>
+    <option value="">Формирование российской идентичности, единства российской нации, содействие межкультурному и межконфессиональному диалогу</option>
+    <option value="">Формирование у молодeжи семейных ценностей</option>
+</select>
+        <button type="submit">Find</button>
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>
