@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard</title>
+</head>
+<body>
+    <ul>
+        {% for budget in object_list %}
+          <li>
+            {{ budget.region }}, {{ budget.area }}
+          </li>
+        {% endfor %}
+    </ul>
+    <form action="{% url 'home' %}" method="get">
+        <input name="area" type="text" placeholder="Область">
+        <input name="year_from" type="text" placeholder="Год начала">
+        <input name="year_to" type="text" placeholder="Год окончания">
+        <button type="submit">Find</button>
+    </form>
+</body>
+</html>

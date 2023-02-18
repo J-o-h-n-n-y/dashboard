@@ -1,0 +1,7 @@
+venv
+.mypy_cache
+migrations
+*.pyc
+media
+*.sqlite3
+*.cfg
