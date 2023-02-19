@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
     <title>DashBoard</title>
     
@@ -12,40 +12,51 @@
 
 
 <body>
-    <ul>
+    <!-- <ul>
         {% for budget in object_list %}
           <li>
             {{ budget.region }}, {{ budget.area }}, {{ budget.grants }}
           </li>
         {% endfor %}
-    </ul>
+    </ul> -->
+    <py-config>
+      packages = [
+        "matplotlib",
+        "soccerplots",
+        "numpy",
+      ]
+      paths = ["./graphs.py"]
+    </py-config>
+    
     <form method = "post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
       <button type="submit">Upload</button>
     </form>
     <div id="mpl"></div>
-      <py-config>
-      packages = [
-        "matplotlib",
-      ]
-    </py-config>
     <py-script output="plot">
         
-        import matplotlib
         import matplotlib.pyplot as plt
+        import matplotlib.font_manager
         import numpy as np
+        from soccerplots.radar_chart import Radar
 
 
-        t = np.arange(0.0, 2.0, 0.01)
-        s = 1 + np.sin(2 * np.pi * t)
+        params = ['Tor', 'CV', 'HYPO', 'HYPER', 'mean']
+        ranges = [(-1440*0.2, 1440), (-0.2, 1), (-0.4*0.2, 0.4), 
+                  (-7.2*0.2, 7.2), (-310*0.2, 310)]
+        values = [[565, 0.4, 0.07, 0.5, 154],
+                  [0, 0, 0, 0, 0]]
 
-        fig, ax = plt.subplots()
-        ax.plot(t, s)
-
-        ax.grid()
-
+        fig, ax = plt.subplots(figsize=(10, 30))
+        radar = Radar(range_fontsize=10, label_fontsize=20)
+        
+        fig, ax = radar.plot_radar(ranges=ranges, params=params, 
+                                   values=values, radar_color=['blue', 'red'],
+                                   figax=(fig,ax), compare=True)
+      
         display(fig)
+        
     </py-script>
 </body>
 </html>

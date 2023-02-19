@@ -1,0 +1,45 @@
+.but {
+    width: 100px;
+    height: 40px;
+    background-color: #1a0f49de;
+    color: blueviolet;
+    font-size: 25px;
+    border-radius: 5PX;
+    border: solid 2px blueviolet;
+}
+
+.graph1 {
+    width: 500px;
+    height: 500px;
+    border: solid 2px #1a0f49de;
+    border-radius: 10px;
+    background-color: #2f0f49f1;
+    color: blueviolet;
+    font-size: 25px;
+}
+
+.graph2 {
+    width: 500px;
+    height: 500px;
+    border: solid 2px #1a0f49de;
+    border-radius: 10px;
+    background-color: #2f0f49f1;
+    color: blueviolet;
+    font-size: 25px;
+}
+
+.graph3s {
+    width: 500px;
+    height: 500px;
+    border: solid 2px #1a0f49de;
+    border-radius: 10px;
+    background-color: #2f0f49f1;
+    color: blueviolet;
+    font-size: 25px;
+}
+
+body {
+    color: blueviolet;
+    font-size: 25px;
+    background-color: #2f0f49f1;
+}

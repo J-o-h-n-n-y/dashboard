@@ -1,0 +1,116 @@
+<html>
+  <head>
+    <title>Ice Cream Picker</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <link rel="stylesheet" href="/style.css">
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  </head>
+  <body>
+
+    <py-config>
+      packages = ["matplotlib", "pandas", "soccerplots", "numpy"]
+      paths = ["./graphs.py", "./mongo_dump*"]
+    </py-config>
+
+    <py-script>
+      import pandas as pd
+      import matplotlib.pyplot as plt
+      import matplotlib.tri as tri
+      from soccerplots.radar_chart import Radar
+      import random
+      import numpy as np
+
+      from pyodide.http import open_url
+
+      url = (
+          "https://raw.githubusercontent.com/Cheukting/pyscript-ice-cream/main/bj-products.csv"
+      )
+      ice_data = pd.read_csv(open_url(url))
+
+      def radar():
+        params = ['Федеральный бюджет', 'Муниципальный бюджет', 'Количество грантов', 'Бюджет грантов', 'Количество молодежи', 'Публичные организации']
+     
+        ranges = [(0, 5000), (0, 5000), (0, 1000), (0, 2000), (0, 100000), (0, 1000)]
+     
+        values = [
+          [random.randint(0, 5000), random.randint(0, 5000), random.randint(0, 1000), random.randint(0, 2000), random.randint(0, 100000), random.randint(0, 1000)],          
+          [random.randint(0, 5000), random.randint(0, 5000), random.randint(0, 1000), random.randint(0, 2000), random.randint(0, 100000), random.randint(0, 1000)]         
+        ]
+        
+        radar = Radar(background_color="#121212", patch_color="#28252C", label_color="#F0FFF0",
+                      range_color="#F0FFF0")
+     
+        fig, ax = radar.plot_radar(ranges=ranges, params=params, values=values, radar_color=['#b32116', "#612aed"], alphas=[0.4, 0.6], 
+                                  compare=True)                                    
+        
+        display(fig, target="radar-area", append=False)
+      
+      radar()
+
+      def plot():
+        # Fixing random state for reproducibility
+        np.random.seed(19680801)
+
+        fig = plt.figure()
+        ax = fig.add_subplot(projection='3d')
+        x, y = np.random.rand(2, 100) * 4
+        hist, xedges, yedges = np.histogram2d(x, y, bins=4, range=[[0, 4], [0, 4]])
+
+        # Construct arrays for the anchor positions of the 16 bars.
+        xpos, ypos = np.meshgrid(xedges[:-1] + 0.25, yedges[:-1] + 0.25, indexing="ij")
+        xpos = xpos.ravel()
+        ypos = ypos.ravel()
+        zpos = 0
+
+        # Construct arrays with the dimensions for the 16 bars.
+        dx = dy = 0.5 * np.ones_like(zpos)
+        dz = hist.ravel()
+
+        ax.bar3d(xpos, ypos, zpos, dx, dy, dz, zsort='average')
+        display(fig, target="plot-area", append=False)
+
+      plot()
+
+      
+      labels = 'Федеральный', 'Муниципальный', 'На гранты', 'Общий'
+      sizes = [random.randint(10, 20), random.randint(10, 20), random.randint(0, 10), random.randint(0, 20)]
+
+      def pie():
+          fig, ax = plt.subplots()
+          ax.pie(sizes, labels=labels, autopct='%1.1f%%', pctdistance=1.25, labeldistance=.6)
+          display(fig, target="pie-area", append=False)
+
+      pie()
+    </py-script>
+
+    <form method="POST" novalidate>
+      {% csrf_token %}
+      <div>
+      {% for field in form %}
+      <div class="form-group">
+          <div>{{field}}</div>
+          {% if field.errors%}
+          {% for error in field.errors %}
+          <div class="alert alert-danger">
+              {{error}}
+          </div>
+          {% endfor %}
+          {% endif %}
+      </div>
+      {% endfor %}
+      </div>
+      <input class="but" type="submit" value="Показать" >
+    </form>
+    <ul>
+        {% for budget in object_list %}
+          <li>
+            {{ budget.region }}, {{ budget.area }}
+          </li>
+        {% endfor %}
+    </ul>
+    <div class="graph1" id="pie-area"></div>
+    <div class="graph2" id="plot-area"></div>
+    <div class="graph3" id="radar-area"></div>
+  </body>
+</html>

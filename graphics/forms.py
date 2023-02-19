@@ -3,10 +3,12 @@ from django import forms
 from .models import Budget, Direction, Region
 
 
-class BudgetForm(forms.ModelForm):
-    direction = forms.ModelMultipleChoiceField(queryset=Direction.objects, required=False)
-    region = forms.ModelMultipleChoiceField(queryset=Region.objects, required=False)
+class SearchForm(forms.ModelForm):
+    direction = forms.ModelChoiceField(queryset=Direction.objects, required=False)
+    region = forms.ModelChoiceField(queryset=Region.objects, required=False)
+    year = forms.IntegerField(max_value=2023)
 
     class Meta:
         model = Budget
-        fields = ["year"]
+        fields = ["direction", "region"]
+
